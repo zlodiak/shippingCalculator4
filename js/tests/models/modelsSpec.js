@@ -163,7 +163,7 @@ describe("CalcModel:", function() {
 
     it("should generate errors for negative number data", function() {
       this.model._resetErr();
-      this.model._validShippOptionsWeight('qw');
+      this.model._validShippOptionsWeight(-23);
 
       expect(this.model.get('errShippOptionsWeight').length).not.toEqual(0);      
     });    
@@ -177,7 +177,7 @@ describe("CalcModel:", function() {
 
     it("should generate errors for string data", function() {
       this.model._resetErr();
-      this.model._validShippOptionsWeight(0);
+      this.model._validShippOptionsWeight('qwerty');
 
       expect(this.model.get('errShippOptionsWeight').length).not.toEqual(0);      
     });  
@@ -187,6 +187,44 @@ describe("CalcModel:", function() {
       this.model._validShippOptionsWeight('');
 
       expect(this.model.get('errShippOptionsWeight').length).not.toEqual(0);      
+    });          
+  });  
+
+
+  describe("_validSizeLength", function() {
+    it("should not generate errors for positive number data", function() {
+      this.model._resetErr();
+      this.model._validSizeLength(122);
+
+      expect(this.model.get('errSizeLength').length).toEqual(0);      
+    });
+
+    it("should generate errors for negative number data", function() {
+      this.model._resetErr();
+      this.model._validSizeLength(-6);
+
+      expect(this.model.get('errSizeLength').length).not.toEqual(0);      
+    });    
+
+    it("should generate errors for zero number data", function() {
+      this.model._resetErr();
+      this.model._validSizeLength(0);
+
+      expect(this.model.get('errSizeLength').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for string data", function() {
+      this.model._resetErr();
+      this.model._validSizeLength('sgsdgsg');
+
+      expect(this.model.get('errSizeLength').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for empty data", function() {
+      this.model._resetErr();
+      this.model._validSizeLength('');
+
+      expect(this.model.get('errSizeLength').length).not.toEqual(0);      
     });          
   });          
 });

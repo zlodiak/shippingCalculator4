@@ -97,33 +97,33 @@
             <label>Длина</label>
 
             <div class="input-group">
-              <input type="text" class="form-control" id="fldShippOptionsLength">
+              <input type="text" class="form-control" id="fldSizeLength">
               <span class="input-group-addon">м</span>
             </div>
 
-            <div id="errMsg_shippOptionsLength" class="help-block"></div>
+            <div id="errMsg_sizeLength" class="help-block"></div>
           </div>
 
           <div class="col-xs-4">
             <label>Ширина</label>
 
             <div class="input-group">
-              <input type="text" class="form-control" id="fldShippOptionsWidth">
+              <input type="text" class="form-control" id="fldSizeWidth">
               <span class="input-group-addon">м</span>
             </div>
 
-            <div id="errMsg_shippOptionsWidth" class="help-block"></div>
+            <div id="errMsg_sizeWidth" class="help-block"></div>
           </div>
 
           <div class="col-xs-4">
             <label>Высота</label>
 
             <div class="input-group">
-              <input type="text" class="form-control" id="fldShippOptionsHeight">
+              <input type="text" class="form-control" id="fldSizeHeight">
               <span class="input-group-addon">м</span>
             </div>
 
-            <div id="errMsg_shippOptionsHeight" class="help-block"></div>
+            <div id="errMsg_sizeHeight" class="help-block"></div>
           </div>                    
         </div>        
       </div>

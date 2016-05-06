@@ -15,11 +15,11 @@ describe("valuesValidator:", function() {
   describe("minusNumCheck", function() {
     var errorMessage = 'Это значение не может быть меньше нуля';
 
-    it("should return errormessage for positive value", function() {
+    it("should return errormessage for negative value", function() {
       expect(APP.valuesValidator.minusNumCheck(-6)).toEqual(errorMessage);
     });
 
-    it("should not return errormessage for negative value", function() {
+    it("should not return errormessage for positive value", function() {
       expect(APP.valuesValidator.minusNumCheck(55)).not.toEqual(errorMessage);
     });  
 

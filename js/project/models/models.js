@@ -16,10 +16,10 @@ APP.CalcModel = Backbone.Model.extend({
     errShippOptionsVolume: [],
     errSizeLength: [],
     errSizeWidth: [],
-    errSizeWidth: []
+    errSizeHeight: []
   }, 
 
-  validate: function(attrs) {   
+  validate: function(attrs) {     
     this._resetErr();
 
     this._validDepartCity(attrs.departCity);
@@ -27,17 +27,26 @@ APP.CalcModel = Backbone.Model.extend({
     this._validShippOptionsWeight(attrs.shippOptionsWeight);
     this._validShippOptionsVolume(attrs.shippOptionsVolume);
 
+    if(this.get('sizeVisibility')) { 
+      this._validSizeLength(attrs.sizeLength);
+    };
+    
+/*    this._validSizeWidth(attrs.sizeWidth);
+    this._validSizeHeight(attrs.sizeHeight);*/
+
     if(
       this.get('errDepartCity').length != 0 ||
       this.get('errDestinCity').length != 0 ||
       this.get('errShippOptionsWeight').length != 0 ||
-      this.get('errShippOptionsVolume').length != 0 
+      this.get('errShippOptionsVolume').length != 0 ||
+      this.get('errSizeLength').length != 0 
     ) { 
       return {
         'departCity': this.get('errDepartCity'),
         'destinCity': this.get('errDestinCity'),
         'shippOptionsWeight': this.get('errShippOptionsWeight'),
-        'shippOptionsVolume': this.get('errShippOptionsVolume')
+        'shippOptionsVolume': this.get('errShippOptionsVolume'),
+        'sizeLength': this.get('errSizeLength')
       };
     };
   },
@@ -47,6 +56,9 @@ APP.CalcModel = Backbone.Model.extend({
     this.set({'errDestinCity': []});
     this.set({'errShippOptionsWeight': []});
     this.set({'errShippOptionsVolume': []});    
+    this.set({'errSizeLength': []});    
+    this.set({'errSizeWidth': []});    
+    this.set({'errSizeHeight': []});    
   },
 
   _validDepartCity: function(city) { 
@@ -93,7 +105,7 @@ APP.CalcModel = Backbone.Model.extend({
     var emptyCheck = APP.valuesValidator.emptyCheck(volume), 
         minusNumCheck = APP.valuesValidator.minusNumCheck(volume), 
         nullNumCheck = APP.valuesValidator.nullNumCheck(volume), 
-        isStrCheck = APP.valuesValidator.isStrCheck(volume);
+        isStrCheck = APP.valuesValidator.isStrCheck(volume);       
 
     if(emptyCheck) { this.get('errShippOptionsVolume').push(emptyCheck) } else {
       if(isStrCheck) { this.get('errShippOptionsVolume').push(isStrCheck) } else {
@@ -101,7 +113,21 @@ APP.CalcModel = Backbone.Model.extend({
         if(nullNumCheck) { this.get('errShippOptionsVolume').push(nullNumCheck) };        
       };
     };   
-  }  
+  },
+
+  _validSizeLength: function(length) {  
+    var emptyCheck = APP.valuesValidator.emptyCheck(length), 
+        minusNumCheck = APP.valuesValidator.minusNumCheck(length), 
+        nullNumCheck = APP.valuesValidator.nullNumCheck(length), 
+        isStrCheck = APP.valuesValidator.isStrCheck(length);
+
+    if(emptyCheck) { this.get('errSizeLength').push(emptyCheck) } else {
+      if(isStrCheck) { this.get('errSizeLength').push(isStrCheck) } else {
+        if(minusNumCheck) { this.get('errSizeLength').push(minusNumCheck) };
+        if(nullNumCheck) { this.get('errSizeLength').push(nullNumCheck) };        
+      };
+    };   
+  }      
 
 });
 
