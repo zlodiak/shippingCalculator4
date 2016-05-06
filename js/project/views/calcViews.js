@@ -43,9 +43,16 @@ APP.CalcView = Backbone.View.extend({
 
   _computePrice: function() { 
     var weight = this.model.get('shippOptionsWeight'),
-        volume = this.model.get('shippOptionsVolume');
+        volume = this.model.get('shippOptionsVolume'),
+        length = this.model.get('sizeLength'),
+        width = this.model.get('sizeWidth'),
+        height = this.model.get('sizeHeight'),
+        sizeVisibility = this.model.get('sizeVisibility'),
+        price = (weight + volume) / 20;
 
-    return parseInt((weight + volume) / 20, 10);
+    if(length && width && height && sizeVisibility) { price += (length * width) / height };
+
+    return parseInt(price, 10);
   },
 
   _setModel: function() { 
