@@ -6,14 +6,17 @@ APP.CalcModel = Backbone.Model.extend({
     destinCity: undefined,
     shippOptionsWeight: undefined,
     shippOptionsVolume: undefined,
+    sizeLength: undefined,
+    sizeWidth: undefined,
+    sizeHeight: undefined,
+    sizeVisibility: false,    
     errDepartCity: [],
     errDestinCity: [],
     errShippOptionsWeight: [],
     errShippOptionsVolume: [],
-    sizeLength: undefined,
-    sizeWidth: undefined,
-    sizeHeight: undefined,
-    sizeVisibility: false
+    errSizeLength: [],
+    errSizeWidth: [],
+    errSizeWidth: []
   }, 
 
   validate: function(attrs) {   
@@ -78,10 +81,12 @@ APP.CalcModel = Backbone.Model.extend({
         nullNumCheck = APP.valuesValidator.nullNumCheck(weight), 
         isStrCheck = APP.valuesValidator.isStrCheck(weight);
 
-    if(emptyCheck) { this.get('errShippOptionsWeight').push(emptyCheck) };
-    if(minusNumCheck) { this.get('errShippOptionsWeight').push(minusNumCheck) };
-    if(nullNumCheck) { this.get('errShippOptionsWeight').push(nullNumCheck) };
-    if(isStrCheck) { this.get('errShippOptionsWeight').push(isStrCheck) };    
+    if(emptyCheck) { this.get('errShippOptionsWeight').push(emptyCheck) } else {
+      if(isStrCheck) { this.get('errShippOptionsWeight').push(isStrCheck) } else {
+        if(minusNumCheck) { this.get('errShippOptionsWeight').push(minusNumCheck) };
+        if(nullNumCheck) { this.get('errShippOptionsWeight').push(nullNumCheck) };        
+      }; 
+    };       
   }, 
 
   _validShippOptionsVolume: function(volume) {  
@@ -90,10 +95,12 @@ APP.CalcModel = Backbone.Model.extend({
         nullNumCheck = APP.valuesValidator.nullNumCheck(volume), 
         isStrCheck = APP.valuesValidator.isStrCheck(volume);
 
-    if(emptyCheck) { this.get('errShippOptionsVolume').push(emptyCheck) };
-    if(minusNumCheck) { this.get('errShippOptionsVolume').push(minusNumCheck) };
-    if(nullNumCheck) { this.get('errShippOptionsVolume').push(nullNumCheck) };
-    if(isStrCheck) { this.get('errShippOptionsVolume').push(isStrCheck) };    
+    if(emptyCheck) { this.get('errShippOptionsVolume').push(emptyCheck) } else {
+      if(isStrCheck) { this.get('errShippOptionsVolume').push(isStrCheck) } else {
+        if(minusNumCheck) { this.get('errShippOptionsVolume').push(minusNumCheck) };
+        if(nullNumCheck) { this.get('errShippOptionsVolume').push(nullNumCheck) };        
+      };
+    };   
   }  
 
 });
