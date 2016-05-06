@@ -9,7 +9,11 @@ APP.CalcModel = Backbone.Model.extend({
     errDepartCity: [],
     errDestinCity: [],
     errShippOptionsWeight: [],
-    errShippOptionsVolume: []   
+    errShippOptionsVolume: [],
+    sizeX: undefined,
+    sizeY: undefined,
+    sizeZ: undefined,
+    sizeVisibility: false
   }, 
 
   validate: function(attrs) {   
