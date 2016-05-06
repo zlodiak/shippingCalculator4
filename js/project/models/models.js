@@ -29,24 +29,27 @@ APP.CalcModel = Backbone.Model.extend({
 
     if(this.get('sizeVisibility')) { 
       this._validSizeLength(attrs.sizeLength);
+      this._validSizeWidth(attrs.sizeWidth);
+      this._validSizeHeight(attrs.sizeHeight);      
     };
     
-/*    this._validSizeWidth(attrs.sizeWidth);
-    this._validSizeHeight(attrs.sizeHeight);*/
-
     if(
       this.get('errDepartCity').length != 0 ||
       this.get('errDestinCity').length != 0 ||
       this.get('errShippOptionsWeight').length != 0 ||
       this.get('errShippOptionsVolume').length != 0 ||
-      this.get('errSizeLength').length != 0 
+      this.get('errSizeLength').length != 0 ||
+      this.get('errSizeWidth').length != 0 ||
+      this.get('errSizeHeight').length != 0 
     ) { 
       return {
         'departCity': this.get('errDepartCity'),
         'destinCity': this.get('errDestinCity'),
         'shippOptionsWeight': this.get('errShippOptionsWeight'),
         'shippOptionsVolume': this.get('errShippOptionsVolume'),
-        'sizeLength': this.get('errSizeLength')
+        'sizeLength': this.get('errSizeLength'),
+        'sizeWidth': this.get('errSizeWidth'),
+        'sizeHeight': this.get('errSizeHeight')
       };
     };
   },
@@ -127,7 +130,35 @@ APP.CalcModel = Backbone.Model.extend({
         if(nullNumCheck) { this.get('errSizeLength').push(nullNumCheck) };        
       };
     };   
-  }      
+  },
+
+  _validSizeWidth: function(width) {  
+    var emptyCheck = APP.valuesValidator.emptyCheck(width), 
+        minusNumCheck = APP.valuesValidator.minusNumCheck(width), 
+        nullNumCheck = APP.valuesValidator.nullNumCheck(width), 
+        isStrCheck = APP.valuesValidator.isStrCheck(width);
+
+    if(emptyCheck) { this.get('errSizeWidth').push(emptyCheck) } else {
+      if(isStrCheck) { this.get('errSizeWidth').push(isStrCheck) } else {
+        if(minusNumCheck) { this.get('errSizeWidth').push(minusNumCheck) };
+        if(nullNumCheck) { this.get('errSizeWidth').push(nullNumCheck) };        
+      };
+    };   
+  },
+
+  _validSizeHeight: function(height) {  
+    var emptyCheck = APP.valuesValidator.emptyCheck(height), 
+        minusNumCheck = APP.valuesValidator.minusNumCheck(height), 
+        nullNumCheck = APP.valuesValidator.nullNumCheck(height), 
+        isStrCheck = APP.valuesValidator.isStrCheck(height);
+
+    if(emptyCheck) { this.get('errSizeHeight').push(emptyCheck) } else {
+      if(isStrCheck) { this.get('errSizeHeight').push(isStrCheck) } else {
+        if(minusNumCheck) { this.get('errSizeHeight').push(minusNumCheck) };
+        if(nullNumCheck) { this.get('errSizeHeight').push(nullNumCheck) };        
+      };
+    };   
+  }            
 
 });
 

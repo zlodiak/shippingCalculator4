@@ -226,7 +226,83 @@ describe("CalcModel:", function() {
 
       expect(this.model.get('errSizeLength').length).not.toEqual(0);      
     });          
-  });          
+  }); 
+  
+
+  describe("_validSizeWidth", function() {
+    it("should not generate errors for positive number data", function() {
+      this.model._resetErr();
+      this.model._validSizeWidth(122);
+
+      expect(this.model.get('errSizeWidth').length).toEqual(0);      
+    });
+
+    it("should generate errors for negative number data", function() {
+      this.model._resetErr();
+      this.model._validSizeWidth(-6);
+
+      expect(this.model.get('errSizeWidth').length).not.toEqual(0);      
+    });    
+
+    it("should generate errors for zero number data", function() {
+      this.model._resetErr();
+      this.model._validSizeWidth(0);
+
+      expect(this.model.get('errSizeWidth').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for string data", function() {
+      this.model._resetErr();
+      this.model._validSizeWidth('sgsdgsg');
+
+      expect(this.model.get('errSizeWidth').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for empty data", function() {
+      this.model._resetErr();
+      this.model._validSizeWidth('');
+
+      expect(this.model.get('errSizeWidth').length).not.toEqual(0);      
+    });          
+  });   
+
+
+  describe("_validSizeHeight", function() {
+    it("should not generate errors for positive number data", function() {
+      this.model._resetErr();
+      this.model._validSizeHeight(122);
+
+      expect(this.model.get('errSizeHeight').length).toEqual(0);      
+    });
+
+    it("should generate errors for negative number data", function() {
+      this.model._resetErr();
+      this.model._validSizeHeight(-6);
+
+      expect(this.model.get('errSizeHeight').length).not.toEqual(0);      
+    });    
+
+    it("should generate errors for zero number data", function() {
+      this.model._resetErr();
+      this.model._validSizeHeight(0);
+
+      expect(this.model.get('errSizeHeight').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for string data", function() {
+      this.model._resetErr();
+      this.model._validSizeHeight('sgsdgsg');
+
+      expect(this.model.get('errSizeHeight').length).not.toEqual(0);      
+    });  
+
+    it("should generate errors for empty data", function() {
+      this.model._resetErr();
+      this.model._validSizeHeight('');
+
+      expect(this.model.get('errSizeHeight').length).not.toEqual(0);      
+    });          
+  });                
 });
 
 
