@@ -27,13 +27,20 @@ APP.DestinCityView = Backbone.View.extend({
 
 
 APP.ShippOptionsView = Backbone.View.extend({    
+  initialize: function() {
+    this.listenTo(this.model, 'change:sizeVisibility', this.render);
+  },
 
   id: 'shippOptionsWidget',
 
   template: _.template($('#shippOptionsTpl').html()),
 
   render: function () {  
-    this.$el.html(this.template());
+    var size_visibility = this.model.get('sizeVisibility') ? 'show' : 'hide';
+
+    this.$el.html(this.template({
+      size_visibility: size_visibility
+    }));
     return this;
   },
 

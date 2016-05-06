@@ -92,7 +92,7 @@
           </div>        
         </div>        
 
-        <div class="row">
+        <div class="row size_container <%= size_visibility %>">
           <div class="col-xs-4">
             <label>Длина</label>
 
