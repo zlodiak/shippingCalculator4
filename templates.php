@@ -85,6 +85,47 @@
             <div id="errMsg_shippOptionsVolume" class="help-block"></div>      
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-4">
+            <h4 class="size_visible_toggler" id="sizeVisibleToggler">Ввести размеры</h4>
+          </div>        
+        </div>        
+
+        <div class="row">
+          <div class="col-xs-4">
+            <label>Длина</label>
+
+            <div class="input-group">
+              <input type="text" class="form-control" id="fldShippOptionsLength">
+              <span class="input-group-addon">м</span>
+            </div>
+
+            <div id="errMsg_shippOptionsLength" class="help-block"></div>
+          </div>
+
+          <div class="col-xs-4">
+            <label>Ширина</label>
+
+            <div class="input-group">
+              <input type="text" class="form-control" id="fldShippOptionsWidth">
+              <span class="input-group-addon">м</span>
+            </div>
+
+            <div id="errMsg_shippOptionsWidth" class="help-block"></div>
+          </div>
+
+          <div class="col-xs-4">
+            <label>Высота</label>
+
+            <div class="input-group">
+              <input type="text" class="form-control" id="fldShippOptionsHeight">
+              <span class="input-group-addon">м</span>
+            </div>
+
+            <div id="errMsg_shippOptionsHeight" class="help-block"></div>
+          </div>                    
+        </div>        
       </div>
     </div>
   </div>

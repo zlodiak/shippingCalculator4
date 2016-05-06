@@ -43,6 +43,13 @@ INFO:
 	color: red;
 }
 
+.shipp_calc .size_visible_toggler{
+	text-decoration: underline;
+	font-weight: bold;
+
+	cursor: pointer;
+}
+
 /****************************************************************************** GLOBAL_layout */
 
 

@@ -35,6 +35,15 @@ APP.ShippOptionsView = Backbone.View.extend({
   render: function () {  
     this.$el.html(this.template());
     return this;
+  },
+
+  events: {
+    'click #sizeVisibleToggler' : 'toggleSizeVisible'
+  },
+
+  toggleSizeVisible: function() { 
+    var sizeVisibility = this.model.get('sizeVisibility');
+    this.model.set({sizeVisibility: !sizeVisibility});
   }
 
 });
