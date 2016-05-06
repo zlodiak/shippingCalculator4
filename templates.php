@@ -86,49 +86,52 @@
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-xs-4">
-            <h4 class="size_visible_toggler" id="sizeVisibleToggler">Ввести размеры</h4>
-          </div>        
-        </div>        
-
-        <div class="row size_container <%= size_visibility %>">
-          <div class="col-xs-4">
-            <label>Длина</label>
-
-            <div class="input-group">
-              <input type="text" class="form-control" id="fldSizeLength">
-              <span class="input-group-addon">м</span>
-            </div>
-
-            <div id="errMsg_sizeLength" class="help-block"></div>
-          </div>
-
-          <div class="col-xs-4">
-            <label>Ширина</label>
-
-            <div class="input-group">
-              <input type="text" class="form-control" id="fldSizeWidth">
-              <span class="input-group-addon">м</span>
-            </div>
-
-            <div id="errMsg_sizeWidth" class="help-block"></div>
-          </div>
-
-          <div class="col-xs-4">
-            <label>Высота</label>
-
-            <div class="input-group">
-              <input type="text" class="form-control" id="fldSizeHeight">
-              <span class="input-group-addon">м</span>
-            </div>
-
-            <div id="errMsg_sizeHeight" class="help-block"></div>
-          </div>                    
-        </div>        
       </div>
     </div>
   </div>
+</script>
+
+<script type="text/template" id="sizeTpl">
+  <div class="row">
+    <div class="col-xs-12">
+      <h4 class="size_visible_toggler" id="sizeVisibleToggler">Ввести размеры</h4>
+    </div>        
+  </div>        
+
+  <div class="row size_container <%= size_visibility %>">
+    <div class="col-xs-4">
+      <label>Длина</label>
+
+      <div class="input-group">
+        <input type="text" class="form-control" id="fldSizeLength" value="<%= lengthInitVal %>">
+        <span class="input-group-addon">м</span>
+      </div>
+
+      <div id="errMsg_sizeLength" class="help-block"></div>
+    </div>
+
+    <div class="col-xs-4">
+      <label>Ширина</label>
+
+      <div class="input-group">
+        <input type="text" class="form-control" id="fldSizeWidth" value="<%= widthInitVal %>">
+        <span class="input-group-addon">м</span>
+      </div>
+
+      <div id="errMsg_sizeWidth" class="help-block"></div>
+    </div>
+
+    <div class="col-xs-4">
+      <label>Высота</label>
+
+      <div class="input-group">
+        <input type="text" class="form-control" id="fldSizeHeight" value="<%= heightInitVal %>">
+        <span class="input-group-addon">м</span>
+      </div>
+
+      <div id="errMsg_sizeHeight" class="help-block"></div>
+    </div>                    
+  </div> 
 </script>
 
 
